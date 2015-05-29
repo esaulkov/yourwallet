@@ -45,13 +45,21 @@ group :development, :test do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
+  gem 'rspec', '~> 3.0'
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
 
-  gem 'factory_girl_rails', group: :test
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
+  gem 'shoulda-matchers'
+end
 
 group :production do
   gem 'pg'
