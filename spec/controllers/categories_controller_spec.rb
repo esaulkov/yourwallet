@@ -28,7 +28,7 @@ RSpec.describe CategoriesController, :type => :controller do
 
   describe "POST create" do
     context "with valid attributes" do
-      it "creates a new user" do
+      it "creates a new category" do
         expect {
           post :create, category: FactoryGirl.attributes_for(:category)
         }.to change(Category, :count).by(1)
@@ -41,7 +41,7 @@ RSpec.describe CategoriesController, :type => :controller do
     end
     
     context "with invalid attributes" do
-      it "does not save the new user" do
+      it "does not save the new category" do
         expect {
           post :create, category: FactoryGirl.attributes_for(:invalid_category)
         }.to_not change(Category, :count)
