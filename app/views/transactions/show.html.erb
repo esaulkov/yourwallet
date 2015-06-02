@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date, time:</strong>
+  <%= @transaction.date_time %>
+</p>
+
+<p>
+  <strong>Wallet:</strong>
+  <%= @transaction.wallet %>
+</p>
+
+<p>
+  <strong>Purchase:</strong>
+  <%= @transaction.purchase %>
+</p>
+
+<p>
+  <strong>Sum:</strong>
+  <%= @transaction.sum %>
+</p>
+
+<%= link_to 'Edit', edit_transaction_path(@transaction) %> |
+<%= link_to 'Back', transactions_path %>
