@@ -1,16 +1,27 @@
 Rails.application.routes.draw do
+  get 'main/index'
+
+  get 'main/about'
+
+  get 'main/contact'
+
+  get 'profile', to: 'users#show', as: 'profile'
+
   devise_for :users
-  resources :purchases
-  resources :categories
-  resources :users
-  resources :wallets
+  resources :categories do
+    resources :purchases, shallow: true
+  end
   resources :transactions
+  resources :users, except: :index do
+    resources :wallets, shallow: true
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   #root 'welcome#index'
-  root 'transactions#index'
+  root 'main#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

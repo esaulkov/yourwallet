@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-12">
+    <% if notice %>
+
+        <div class="alert alert-info fade in" role="alert">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">&times;</a>
+          <%= notice %>
+        </div>
+
+    <% end %>
+
+    <% if alert %>
+
+      <div class="alert alert-danger fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">&times;</a>
+          <%= alert %>
+      </div>
+
+    <% end %>
+  </div>
+</div>
