@@ -1,2 +1,21 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+    <div class="container theme-showcase" role="main">
+
+      <div class="jumbotron">
+        <h1>Your cabinet</h1>
+        <p>Welcome to your finances management system, <%=@user.email %>.</p>
+      </div>
+    
+      <div class="page-header">
+        <h1>Balance</h1>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <%= render :partial => 'operations' %>
+        </div>
+        <div class="col-md-4">
+          <%= render :partial => 'account' %>
+        </div>
+      </div> <!-- /row -->
+      <%=link_to 'Add operations', new_transaction_path, :class => 'btn btn-primary' %>
+    </div>
+    

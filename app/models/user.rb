@@ -20,12 +20,21 @@ class User < ActiveRecord::Base
   
   validates_numericality_of :limit, allow_nil: true
   
+  def account_sum
+    @acc_sum = 0
+    @wallets = Wallet.select(:balance).where(user_id: self.id)
+    @wallets.each do |wallet|
+      @acc_sum += wallet.balance
+    end
+    return @acc_sum
+  end
+
   protected
   # Passwords are always required if it's a new record, or if the password
   # or confirmation are being set somewhere.
   # From Devise gem
   def password_required?
     !persisted? || !password.nil? || !password_confirmation.nil?
-  end  
+  end
   
 end

@@ -8,16 +8,27 @@
                   <table class="table table-striped">
                     <tbody>
                       <tr class="total">
-                        <td>Your account</td>
-                        <td class="text-right">95 487 руб.</td>
+                        <td>Your account (total)</td>
+                        <td class="text-right">
+                          <%= @user.account_sum.to_s(:delimited, :delimiter => " ") %> руб.
+                        </td>
                       </tr>
+                      <% @wallets.each do |wallet| %>
+                        <tr>
+                          <td><%= wallet.name %></td>
+                          <td class="text-right">
+                            <%= wallet.balance.to_s(:delimited, :delimiter => " ") %> руб.
+                          </td>
+                        </tr>
+                      <% end %>
                     </tbody>
                   </table>
                   <table class="table table-striped">
                     <tbody>
                       <tr class="danger">
                         <td>Your limit</td>
-                        <td class="text-right">1 486 руб.</td>
+                        <td class="text-right">
+                          <%= @user.limit.to_s(:delimited, :delimiter => " ") %> руб.</td>
                       </tr>
                     </tbody>
                   </table>

@@ -1,0 +1,41 @@
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3>Last operations</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Date/Time</th>
+                        <th>Operation</th>
+                        <th>Wallet</th>
+                        <th>Sum</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% @total_sum = 0 %>
+                      <% @last_transactions.each do |transaction| %>
+                        <tr>
+                          <td><%= transaction.date_time.strftime("%F %R") %></td>
+                          <td><%= transaction.purchase_name %></td>
+                          <td><%= transaction.wallet_name %></td>
+                          <td class="text-right">
+                            <%= transaction.sum.to_s(:delimited, :delimiter => " ") %> руб.
+                          </td>
+                        </tr>
+                        <% @total_sum += transaction.sum %>
+                      <% end %>
+                      
+                      <tr class="total">
+                        <td colspan="2">Total</td>
+                        <td colspan="2" class="text-right">-<%=@total_sum.to_s(:delimited, :delimiter => " ") %> руб.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
