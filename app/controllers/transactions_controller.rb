@@ -1,10 +1,13 @@
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
+  before_action :set_user
+  before_action :get_transactions
+  
+  respond_to :html, :js
 
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = Transaction.all
   end
 
   # GET /transactions/1
@@ -26,39 +29,41 @@ class TransactionsController < ApplicationController
   def create
     @transaction = Transaction.new(transaction_params)
 
-    respond_to do |format|
-      if @transaction.save
-        format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
-        format.json { render :show, status: :created, location: @transaction }
-      else
-        format.html { render :new }
-        format.json { render json: @transaction.errors, status: :unprocessable_entity }
-      end
-    end
+#    respond_to do |format|
+#      if @transaction.save
+#        format.html { redirect_to transactions_path, notice: 'Transaction was successfully created.' }
+#        format.js {}
+#        format.json { render :show, status: :created, location: @transaction }
+#      else
+#        format.html { render :new }
+#        format.json { render json: @transaction.errors, status: :unprocessable_entity }
+#      end
+#    end
   end
 
   # PATCH/PUT /transactions/1
   # PATCH/PUT /transactions/1.json
   def update
-    respond_to do |format|
-      if @transaction.update(transaction_params)
-        format.html { redirect_to @transaction, notice: 'Transaction was successfully updated.' }
-        format.json { render :show, status: :ok, location: @transaction }
-      else
-        format.html { render :edit }
-        format.json { render json: @transaction.errors, status: :unprocessable_entity }
-      end
-    end
+    @transaction.update_attributes(transaction_params)
+#    respond_to do |format|
+#      if @transaction.update(transaction_params)
+#        format.html { redirect_to transactions_path, notice: 'Transaction was successfully updated.' }
+#        format.json { render :show, status: :ok, location: @transaction }
+#      else
+#        format.html { render :edit }
+#        format.json { render json: @transaction.errors, status: :unprocessable_entity }
+#      end
+#    end
   end
 
   # DELETE /transactions/1
   # DELETE /transactions/1.json
   def destroy
     @transaction.destroy
-    respond_to do |format|
-      format.html { redirect_to transactions_url, notice: 'Transaction was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+#    respond_to do |format|
+#      format.html { redirect_to transactions_url, notice: 'Transaction was successfully destroyed.' }
+#      format.json { head :no_content }
+#    end
   end
   
   private
@@ -69,6 +74,14 @@ class TransactionsController < ApplicationController
 
     def transaction_params
       params.require(:transaction).permit(:sum, :date_time, :wallet_id, :purchase_id)
+    end
+    
+    def set_user
+      @user = current_user
+    end
+
+    def get_transactions
+      @transactions = Transaction.where(wallet_id: @user.wallets).all.order(date_time: :desc)
     end
 end
 

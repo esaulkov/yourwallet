@@ -13,7 +13,7 @@
                           <%= @user.account_sum.to_s(:delimited, :delimiter => " ") %> руб.
                         </td>
                       </tr>
-                      <% @wallets.each do |wallet| %>
+                      <% @user.wallets.each do |wallet| %>
                         <tr>
                           <td><%= wallet.name %></td>
                           <td class="text-right">

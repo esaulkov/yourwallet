@@ -1,33 +1,28 @@
-<%= form_for(@transaction) do |f| %>
-  <% if @transaction.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+<%= form_for @transaction, remote: true, html: { class: "form-horizontal", style: "display:inline;" } do |f| %>
+  <div class="modal-body">
+    <ul class="errors"></ul>
 
-      <ul>
-      <% @transaction.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="field">
+      <%= f.label :sum %><br>
+      <%= f.text_field :sum %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :sum %><br>
-    <%= f.text_field :sum %>
-  </div>
-  <div class="field">
-    <%= f.label :date_time %><br>
-    <%= f.text_field :date_time %>
-  </div>
-  <div class="field">
-    <%= f.label :wallet_id %><br>
-    <%= f.text_field :wallet_id %>
-  </div>
-  <div class="field">
-    <%= f.label :purchase_id %><br>
-    <%= f.text_field :purchase_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <div class="field">
+      <%= f.label :date_time %><br>
+      <%= f.datetime_select :date_time %>
+    </div>
+    <div class="field">
+      <%= f.label :wallet_id %><br>
+      <% wallets_array = current_user.wallets.map { |wallet| [wallet.name, wallet.id] } %>
+      <%= f.select :wallet_id, wallets_array %>
+    </div>
+    <div class="field">
+      <%= f.label :purchase_id %><br>
+      <% purchases_array = current_user.get_purchases.map { |purchase| [purchase.name, purchase.id] } %>
+      <%= f.select :purchase_id, purchases_array %>
+    </div>
+  </div><!-- modal-body -->
+  <div class="modal-footer">
+      <%= f.submit class: "btn btn-primary" %>
+      <%= link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"} %>
   </div>
 <% end %>

@@ -7,10 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body role="document">
+<%= render partial: 'layouts/header', layout: 'layouts/user' %>
 
-<%= render 'layouts/flash' %>
+    <div class="container theme-showcase" role="main">
 
-  <%= yield %>
+      <%= render 'layouts/flash' %>
+
+      <%= yield %>
+
+   </div>
 
 </body>
+
 </html>

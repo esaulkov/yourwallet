@@ -22,7 +22,7 @@
                           <td><%= transaction.purchase_name %></td>
                           <td><%= transaction.wallet_name %></td>
                           <td class="text-right">
-                            <%= transaction.sum.to_s(:delimited, :delimiter => " ") %> руб.
+                            <%= number_to_currency transaction.sum %>
                           </td>
                         </tr>
                         <% @total_sum += transaction.sum %>
@@ -30,7 +30,7 @@
                       
                       <tr class="total">
                         <td colspan="2">Total</td>
-                        <td colspan="2" class="text-right">-<%=@total_sum.to_s(:delimited, :delimiter => " ") %> руб.</td>
+                        <td colspan="2" class="text-right">-<%= number_to_currency @total_sum %></td>
                       </tr>
                     </tbody>
                   </table>

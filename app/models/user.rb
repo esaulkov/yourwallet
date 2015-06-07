@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :wallets
+  has_many :categories
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -21,13 +22,20 @@ class User < ActiveRecord::Base
   validates_numericality_of :limit, allow_nil: true
   
   def account_sum
-    @acc_sum = 0
-    @wallets = Wallet.select(:balance).where(user_id: self.id)
-    @wallets.each do |wallet|
-      @acc_sum += wallet.balance
-    end
-    return @acc_sum
+    wallets.to_a.sum  {  |wallet|  wallet.balance  }
   end
+  
+  def get_last_transactions
+    @wallet_ids = wallets.to_a { |wallet| wallet.id }
+    Transaction.joins(:wallet, :purchase).select('distinct transactions.*, wallets.name as wallet_name, purchases.name as purchase_name').where(wallet_id: @wallet_ids).order(date_time: :desc).limit(5)
+  end
+  
+  def get_purchases
+    @category_ids = categories.to_a { |category| category.id }
+    Purchase.select('purchases.*').where(category_id: @category_ids)
+  end
+  
+  private
 
   protected
   # Passwords are always required if it's a new record, or if the password
