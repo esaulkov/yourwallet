@@ -7,11 +7,11 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
   # Delete all data
-  User.delete_all
+  Transaction.delete_all
+  Purchase.delete_all
   Wallet.delete_all
   Category.delete_all
-  Purchase.delete_all
-  Transaction.delete_all
+  User.delete_all
 
   users = User.create([
     { id: 1, name: 'Evgeny Esaulkov', password: 'abracadabra', limit: 20000, email: 'evg.esaulkov@gmail.com' },
@@ -31,7 +31,7 @@
     { :id => 2, :name => 'Кафе/рестораны', :user_id => 1 },
     { :id => 3, :name => 'Перевод средств', :user_id => 1 },
     { :id => 4, :name => 'Бытовые товары', :user_id => 1 },
-    { :id => 5, :name => 'Кафе/рестораны', :user_id => 2 }
+    { :id => 5, :name => 'Кафе и рестораны', :user_id => 2 }
   ])
   
   purchases = Purchase.create([
@@ -41,7 +41,7 @@
     { :id => 4, :name => 'Продукты (м-н "Мария-Ра")', :category_id => 1 },
     { :id => 5, :name => 'Продукты (м-н "Техномир")', :category_id => 1 },
     { :id => 6, :name => 'Помощь брату', :category_id => 3 },
-    { :id => 7, :name => 'Обед (ресторан "New science")', :category_id => 6 }
+    { :id => 7, :name => 'Обед (ресторан "New science")', :category_id => 5 }
   ])
   
   transactions = Transaction.create([
