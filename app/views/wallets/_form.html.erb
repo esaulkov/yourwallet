@@ -1,25 +1,40 @@
-<%= form_for(@wallet) do |f| %>
-  <% if @wallet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@wallet.errors.count, "error") %> prohibited this wallet from being saved:</h2>
+<div class="row">
+  <div class="col-xs-12 col-sm-8 col-md-4">
+    <%= form_for([@user, @wallet]) do |f| %>
+      <% if @wallet.errors.any? %>
+        <div id="error_explanation">
+          <h5><%= pluralize(@wallet.errors.count, "error") %> prohibited this wallet from being saved:</h5>
 
-      <ul>
-      <% @wallet.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+            <% @wallet.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+      <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :balance %><br>
+        <%= f.number_field :balance, class: 'form-control' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :user_id %><br>
+        <%= f.select  :user_id, 
+                      options_for_select([[current_user.name, current_user.id]], 
+                      current_user.id), 
+                      {}, 
+                      { class: 'form-control' } 
+        %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Submit", class: 'form-control btn btn-primary' %>
+      </div>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</dv>

@@ -1,5 +1,8 @@
-        <%= yield %>
           <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'Categories', categories_path %></li>
+            <li><%= link_to 'Wallets', user_wallets_path(current_user) %></li>
+            <li><%= link_to 'Transactions', transactions_path %></li>
+            <li><%= link_to 'Cabinet', profile_path %></li>
             <li><a href="#"></a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -9,8 +12,9 @@
                   <span class="glyphicon glyphicon-user"></span> Владелец
                 <% end %>
                 </li>
-                <li><a href="#"> <span class="glyphicon glyphicon-check"></span> Опции</a></li>
+<!--                <li><a href="#"> <span class="glyphicon glyphicon-check"></span> Опции</a></li>
                 <li><a href="#"> <span class="glyphicon glyphicon-lock"></span> Безопасность</a></li>
+-->                
                 <li class="divider"></li>
                 <li> <%= link_to destroy_user_session_path, :method => :delete do %>
                   <span class="glyphicon glyphicon-off"></span> Выйти

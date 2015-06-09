@@ -4,7 +4,7 @@ class WalletsController < ApplicationController
   # GET /wallets
   # GET /wallets.json
   def index
-    @wallets = Wallet.all
+    @wallets = Wallet.where(user_id: current_user.id).all
   end
 
   # GET /wallets/1
@@ -15,6 +15,7 @@ class WalletsController < ApplicationController
   # GET /wallets/new
   def new
     @wallet = Wallet.new
+    @user = current_user
   end
 
   # GET /wallets/1/edit
@@ -67,7 +68,7 @@ class WalletsController < ApplicationController
     end
   
     def wallet_params
-      params.require(:wallet).permit(:name, :user_id)
+      params.require(:wallet).permit(:name, :user_id, :balance)
     end
 end
  
