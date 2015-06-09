@@ -7,11 +7,11 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
   # Delete all data
+  Transaction.delete_all
+  Purchase.delete_all
   User.delete_all
   Wallet.delete_all
   Category.delete_all
-  Purchase.delete_all
-  Transaction.delete_all
 
   users = User.create([
     { id: 1, name: 'Evgeny Esaulkov', password: 'abracadabra', limit: 20000, email: 'evg.esaulkov@gmail.com' },
