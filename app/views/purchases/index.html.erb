@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listing Purchases</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -15,7 +13,7 @@
     <% @purchases.each do |purchase| %>
       <tr>
         <td><%= purchase.name %></td>
-        <td><%= purchase.category %></td>
+        <td><%= purchase.category[:name] %></td>
         <td><%= link_to 'Show', purchase %></td>
         <td><%= link_to 'Edit', edit_purchase_path(purchase) %></td>
         <td><%= link_to 'Destroy', purchase, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -26,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Purchase', new_purchase_path %>
+<%= link_to 'New Purchase', new_category_purchase_path %>

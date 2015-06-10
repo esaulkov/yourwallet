@@ -1,15 +1,17 @@
 class PurchasesController < ApplicationController
   before_action :set_purchase, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_category, only: [:index, :new]
+  
   # GET /purchases
   # GET /purchases.json
   def index
-    @purchases = Purchase.all
+    @purchases = Purchase.where(category_id: @category).includes(:category).all
   end
 
   # GET /purchases/1
   # GET /purchases/1.json
   def show
+    @transactions = Transaction.where(purchase_id: @purchase).includes(:wallet).all
   end
 
   # GET /purchases/new
@@ -65,6 +67,11 @@ class PurchasesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_purchase
       @purchase = Purchase.find(params[:id])
+#      @category = Category.find(@purchase.category_id)
+    end
+
+    def set_category
+      @category = Category.find(params[:category_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

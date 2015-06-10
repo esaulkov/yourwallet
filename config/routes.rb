@@ -8,12 +8,12 @@ Rails.application.routes.draw do
   get 'profile', to: 'users#show', as: 'profile'
 
   devise_for :users
-  resources :categories do
-    resources :purchases, shallow: true
+  resources :categories, shallow: true do
+    resources :purchases
   end
   resources :transactions
-  resources :users, except: :index do
-    resources :wallets, shallow: true
+  resources :users, except: :index, shallow: true do
+    resources :wallets
   end
   
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,4 +1,5 @@
-<%= form_for(@purchase) do |f| %>
+<div class="col-xs-12 col-sm-8 col-md-4">
+    <%= form_for(purchase = @category ? [@category, @purchase] : @purchase) do |f| %>
   <% if @purchase.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@purchase.errors.count, "error") %> prohibited this purchase from being saved:</h2>
@@ -23,3 +24,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+</div>
