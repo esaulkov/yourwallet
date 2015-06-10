@@ -1,9 +1,37 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3><%= @category.name %></h3>
+  </div>
+  <div class="panel-body">
+    <p>
+      <strong>User:</strong>
+      <%= @category.user[:name] %>
+    </p>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-striped">
+          <tbody>
+            <tr class="total">
+              <td colspan="3">Transactions in this category:</td>
+            </tr>
+            <% @transactions.each do |transaction| %>
+              <tr>
+                <td><%= transaction.date_time %></td>
+                <td><%= transaction.purchase.name %></td>
+                <td><%= transaction.wallet.name %></td>
+                <td><%= number_to_currency transaction.sum %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-sm-12">
+        <%= link_to 'Rename', edit_category_path(@category), class: 'btn btn-warning' %>
+        <%= link_to 'Back', categories_path, class: 'btn btn-info' %>
+      </div>
+  </div>
+</div>
+</div>
+ 

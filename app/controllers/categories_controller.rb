@@ -1,15 +1,17 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_user
 
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @categories = Category.where(user_id: @user.id).includes(:user).all
   end
 
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @transactions = Transaction.where(purchase_id: @category.purchases).includes(:purchase).includes(:wallet).all
   end
 
   # GET /categories/new
@@ -67,8 +69,12 @@ class CategoriesController < ApplicationController
       @category = Category.find(params[:id])
     end
 
+    def set_user
+      @user = current_user
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:name)
+      params.require(:category).permit(:name, :user_id)
     end
 end
