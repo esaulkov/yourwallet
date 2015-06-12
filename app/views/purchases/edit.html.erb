@@ -6,10 +6,9 @@
     <div class="panel-body">
       <div class="row">
         <%= render 'form' %>
-      
         <div class="col-sm-12">
           <%= link_to 'Show', @purchase, class: 'btn btn-success' %>
-          <%= link_to 'Back', category_purchases_path(@category), class: 'btn btn-info' %>
+          <%= link_to 'Back', category_purchases_path(@purchase.category), class: 'btn btn-info' %>
         </div>
       </div>
     </div>

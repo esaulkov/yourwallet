@@ -67,7 +67,6 @@ class PurchasesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_purchase
       @purchase = Purchase.find(params[:id])
-#      @category = Category.find(@purchase.category_id)
     end
 
     def set_category
