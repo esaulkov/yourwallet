@@ -4,15 +4,15 @@
 <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h3>Editing Wallet</h3>
+      <h3><%= t('Editing Wallet') %></h3>
     </div>
     <div class="panel-body">
       <div class="row">
         <%= render 'form' %>
       
         <div class="col-sm-12">
-          <%= link_to 'Show', @wallet, class: 'btn btn-success' %>
-          <%= link_to 'Back', user_wallets_path(current_user), class: 'btn btn-info' %>
+          <%= link_to t('Show'), @wallet, class: 'btn btn-success' %>
+          <%= link_to t('Back'), user_wallets_path(current_user), class: 'btn btn-info' %>
         </div>
       </div>
     </div>

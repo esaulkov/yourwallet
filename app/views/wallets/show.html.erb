@@ -6,11 +6,11 @@
   </div>
   <div class="panel-body">
     <p>
-      <strong>User:</strong>
+      <strong><%= t('User') %>:</strong>
       <%= @wallet.user[:name] %>
     </p>
     <p>   
-      <strong>Balance:</strong>
+      <strong><%= t('Balance') %>:</strong>
       <%= number_to_currency @wallet.balance %>
     </p>
     <div class="row">
@@ -18,7 +18,7 @@
         <table class="table table-striped">
           <tbody>
             <tr class="total">
-              <td colspan="3">Transactions by this wallet:</td>
+              <td colspan="3"><%= t('Transactions by this wallet') %>:</td>
             </tr>
             <% @wallet.transactions.each do |transaction| %>
               <tr>
@@ -31,8 +31,8 @@
         </table>
       </div>
     </div>
-    <%= link_to 'Edit', edit_wallet_path(@wallet), class: 'btn btn-warning' %>
-    <%= link_to 'Back', user_wallets_path(current_user), class: 'btn btn-info' %>
+    <%= link_to t('Edit'), edit_wallet_path(@wallet), class: 'btn btn-warning' %>
+    <%= link_to t('Back'), user_wallets_path(current_user), class: 'btn btn-info' %>
   </div>
 </div>
 </div>

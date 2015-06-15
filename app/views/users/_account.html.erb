@@ -1,6 +1,6 @@
           <div class="panel panel-primary">
             <div class="panel-heading">
-              <h3>Your account</h3>
+              <h3><%= t('Your account') %></h3>
             </div>
             <div class="panel-body">
               <div class="row">
@@ -8,16 +8,16 @@
                   <table class="table table-striped">
                     <tbody>
                       <tr class="total">
-                        <td>Your account (total)</td>
+                        <td><%= t('Your account (total)') %></td>
                         <td class="text-right">
-                          <%= @user.account_sum.to_s(:delimited, :delimiter => " ") %> руб.
+                          <%= number_to_currency @user.account_sum %>
                         </td>
                       </tr>
                       <% @user.wallets.each do |wallet| %>
                         <tr>
                           <td><%= wallet.name %></td>
                           <td class="text-right">
-                            <%= wallet.balance.to_s(:delimited, :delimiter => " ") %> руб.
+                            <%= number_to_currency wallet.balance %>
                           </td>
                         </tr>
                       <% end %>
@@ -26,9 +26,9 @@
                   <table class="table table-striped">
                     <tbody>
                       <tr class="danger">
-                        <td>Your limit</td>
+                        <td><%= t('Your limit') %></td>
                         <td class="text-right">
-                          <%= @user.limit.to_s(:delimited, :delimiter => " ") %> руб.</td>
+                          <%= number_to_currency @user.limit %></td>
                       </tr>
                     </tbody>
                   </table>

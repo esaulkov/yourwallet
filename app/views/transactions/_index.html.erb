@@ -5,9 +5,8 @@
         <td><%= transaction.wallet.name %></td>
         <td><%= @user.name %></td>
         <td><%= number_to_currency transaction.sum %></td>
-        <td><%= link_to 'Show', transaction %></td>
-        <td><%= link_to 'Edit', edit_transaction_path(transaction), remote: true %></td>
-        <td><%= link_to 'Destroy', transaction, method: :delete, remote: true, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('Edit'), edit_transaction_path(transaction), remote: true %></td>
+        <td><%= link_to t('Destroy'), transaction, method: :delete, remote: true, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
 

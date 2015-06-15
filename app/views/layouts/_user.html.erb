@@ -1,15 +1,15 @@
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to 'Categories', categories_path %></li>
-            <li><%= link_to 'Wallets', user_wallets_path(current_user) %></li>
-            <li><%= link_to 'Transactions', transactions_path %></li>
-            <li><%= link_to 'Cabinet', profile_path %></li>
+            <li><%= link_to t('menu.categories'), categories_path %></li>
+            <li><%= link_to t('menu.wallets'), user_wallets_path(current_user) %></li>
+            <li><%= link_to t('menu.transactions'), transactions_path %></li>
+            <li><%= link_to t('menu.cabinet'), profile_path %></li>
             <li><a href="#"></a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
               <%= current_user.email%><span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><%= link_to edit_user_registration_path do %>
-                  <span class="glyphicon glyphicon-user"></span> Владелец
+                  <span class="glyphicon glyphicon-user"></span> <%= t('menu.owner') %>
                 <% end %>
                 </li>
 <!--                <li><a href="#"> <span class="glyphicon glyphicon-check"></span> Опции</a></li>
@@ -17,7 +17,7 @@
 -->                
                 <li class="divider"></li>
                 <li> <%= link_to destroy_user_session_path, :method => :delete do %>
-                  <span class="glyphicon glyphicon-off"></span> Выйти
+                  <span class="glyphicon glyphicon-off"></span> <%= t('menu.logout') %>
                 <% end %>
                 </li>
               </ul>

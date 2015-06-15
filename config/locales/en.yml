@@ -20,4 +20,20 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  Project name: Your wallet
+  menu:
+    home: Home
+    about: About
+    contact: Contact
+    reports: Reports
+    categories: Categories
+    wallets: Wallets
+    transactions: Transactions
+    cabinet: Cabinet
+    owner: Profile
+    logout: Log out
+  categories:
+    index:
+      title: Listing Categories
+    
+

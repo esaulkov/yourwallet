@@ -6,7 +6,7 @@
   </div>
   <div class="panel-body">
     <p>
-      <strong>User:</strong>
+      <strong><%= t("User") %>:</strong>
       <%= @category.user[:name] %>
     </p>
     <div class="row">
@@ -14,7 +14,7 @@
         <table class="table table-striped">
           <tbody>
             <tr class="total">
-              <td colspan="3">Transactions in this category:</td>
+              <td colspan="3"><%= t("Transactions in this category") %>:</td>
             </tr>
             <% @transactions.each do |transaction| %>
               <tr>
@@ -28,8 +28,8 @@
         </table>
       </div>
       <div class="col-sm-12">
-        <%= link_to 'Rename', edit_category_path(@category), class: 'btn btn-warning' %>
-        <%= link_to 'Back', categories_path, class: 'btn btn-info' %>
+        <%= link_to t('Rename'), edit_category_path(@category), class: 'btn btn-warning' %>
+        <%= link_to t('Back'), categories_path, class: 'btn btn-info' %>
       </div>
   </div>
 </div>

@@ -14,14 +14,14 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :category_id %><br>
-    <%= f.text_field :category_id %>
+    <%= f.text_field :category_id, class: 'form-control' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t("Submit"), class: 'form-control btn btn-primary' %>
   </div>
 <% end %>
 </div>
