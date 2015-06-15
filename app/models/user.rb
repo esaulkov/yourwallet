@@ -27,9 +27,14 @@ class User < ActiveRecord::Base
   
   def get_last_transactions
     @wallet_ids = wallets.to_a { |wallet| wallet.id }
-    Transaction.joins(:wallet, :purchase).select('distinct transactions.*, wallets.name as wallet_name, purchases.name as purchase_name').where(wallet_id: @wallet_ids).order(date_time: :desc).limit(5)
+    Transaction.joins(:wallet, :purchase).select('transactions.*, wallets.name as wallet_name, purchases.name as purchase_name').where(wallet_id: @wallet_ids).order(date_time: :desc).limit(5)
   end
   
+  def get_this_month_transactions
+    @wallet_ids = wallets.to_a { |wallet| wallet.id }
+    Transaction.select('distinct transactions.sum').where(wallet_id: @wallet_ids, date_time: Time.now.at_beginning_of_month..Time.now)
+  end
+
   def get_purchases
     @category_ids = categories.to_a { |category| category.id }
     Purchase.select('purchases.*').where(category_id: @category_ids)

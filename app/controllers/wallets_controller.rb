@@ -57,7 +57,7 @@ class WalletsController < ApplicationController
   def destroy
     @wallet.destroy
     respond_to do |format|
-      format.html { redirect_to wallets_url, notice: 'Wallet was successfully destroyed.' }
+      format.html { redirect_to user_wallets_url(@wallet.user_id), notice: 'Wallet was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
