@@ -31,7 +31,7 @@ class TransactionsController < ApplicationController
 
     respond_to do |format|
       if @transaction.save
-        format.html { render :show, notice: 'Transaction was successfully created.' }
+        format.html { render :show, notice: t('.notice') }
         format.js   {}
         format.json { render :show, status: :created, location: @transaction }
       else
@@ -47,7 +47,7 @@ class TransactionsController < ApplicationController
     @transaction.update_attributes(transaction_params)
     respond_to do |format|
       if @transaction.update(transaction_params)
-        format.html { render :show, notice: 'Transaction was successfully updated.' }
+        format.html { render :show, notice: t('.notice') }
         format.js   {}
         format.json { render :show, status: :ok, location: @transaction }
       else
@@ -62,7 +62,7 @@ class TransactionsController < ApplicationController
   def destroy
     @transaction.destroy
     respond_to do |format|
-      format.html { redirect_to transactions_url, notice: 'Transaction was successfully destroyed.' }
+      format.html { redirect_to transactions_url, notice: t('.notice') }
       format.js   {}
       format.json { head :no_content }
     end

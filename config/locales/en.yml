@@ -35,5 +35,34 @@ en:
   categories:
     index:
       title: Listing Categories
-    
+    create:
+      notice: "Category was successfully created."
+    update:
+      notice: "Category was successfully updated."
+    destroy:
+      notice: "Category was successfully destroyed."
+  purchases:
+    create:
+      notice: "Purchase was successfully created."
+    update:
+      notice: "Purchase was successfully updated."
+    destroy:
+      notice: "Purchase was successfully destroyed."
+  transactions:
+    create:
+      notice: "Transaction was successfully created."
+    update:
+      notice: "Transaction was successfully updated."
+    destroy:
+      notice: "Transaction was successfully destroyed."
+  users:
+    show:
+      alert: "Your costs in this month exceeded the limit"
+  wallets:
+    create:
+      notice: "Wallet was successfully created."
+    update:
+      notice: "Wallet was successfully updated."
+    destroy:
+      notice: "Wallet was successfully destroyed."
 

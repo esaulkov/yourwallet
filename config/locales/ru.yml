@@ -285,6 +285,36 @@ ru:
   categories:
     index:
       title: Список категорий
+    create:
+      notice: "Категория была успешно создана."
+    update:
+      notice: "Категория была успешно обновлена."
+    destroy:
+      notice: "Категория была успешно удалена."
+  purchases:
+    create:
+      notice: "Покупка была успешно создана."
+    update:
+      notice: "Покупка была успешно обновлена."
+    destroy:
+      notice: "Покупка была успешно удалена."
+  transactions:
+    create:
+      notice: "Транзакция была успешно создана."
+    update:
+      notice: "Транзакция была успешно обновлена."
+    destroy:
+      notice: "Транзакция была успешно удалена."
+  users:
+    show:
+      alert: "Ваши затраты в этом месяце превысили установленный лимит"
+  wallets:
+    create:
+      notice: "Счет был успешно создан."
+    update:
+      notice: "Счет был успешно обновлен."
+    destroy:
+      notice: "Счет был успешно удален."
   Editing Category: Редактирование категории
   New Category: Новая категория
   Transactions in this category: Транзакции в этой категории
