@@ -1,8 +1,6 @@
-
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "bootstrap/theme";
 
 .total td {
   font-weight: bold;
@@ -19,5 +17,31 @@
 .actions {
   margin-bottom: 1em;
 }
- 
 
+.modal-form {
+  display: inline;
+}
+
+#modal > div > div {
+  margin-left: 0px;
+}
+
+.modal-form > div > div > input {
+  width: auto;
+}
+
+.modal-form > div > div > select {
+  display: inline;
+  width: auto;
+}
+ 
+.modal-form > div > div > label {
+  display: inline;
+}
+
+.modal-form > div > div > label::after {
+  content: '\A';
+  white-space: pre;
+}
+
+ 
