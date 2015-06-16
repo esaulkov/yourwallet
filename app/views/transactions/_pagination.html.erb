@@ -1,0 +1,16 @@
+      <tr>
+        <td colspan="7">
+          <ul class="pagination">
+          <% page_count = @transactions_count / @page_size %>
+          <% for page_index in 1..page_count %>
+            <% if page_index == @page_number + 1 %>
+              <li class="active">
+            <% else %>
+              <li>
+            <% end %>
+              <a href="?page_number=<%= page_index - 1 %>"><%= page_index %></a></li>
+          <% end %>
+          </ul>
+        </td>
+      </tr>
+ 

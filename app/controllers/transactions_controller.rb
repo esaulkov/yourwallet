@@ -83,7 +83,12 @@ class TransactionsController < ApplicationController
     end
 
     def get_transactions
-      @transactions = Transaction.where(wallet_id: @user.wallets).all.order(date_time: :desc)
+      @page_size ||= 10
+      @page_number = params[:page_number] || session[:page_number] || 0
+      @page_number = @page_number.to_i
+      session[:page_number] = @page_number if session[:page_number] != @page_number
+      @transactions = Transaction.where(wallet_id: @user.wallets).order(date_time: :desc).limit(@page_size).offset(@page_size * @page_number).includes(:purchase).includes(:wallet)
+      @transactions_count = Transaction.where(wallet_id: @user.wallets).count
     end
 end
 

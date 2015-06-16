@@ -1,6 +1,6 @@
     <% @transactions.each do |transaction| %>
       <tr>
-        <td><%= transaction.date_time %></td>
+        <td><%= l transaction.date_time, :format => :long %></td>
         <td><%= transaction.purchase.name %></td>
         <td><%= transaction.wallet.name %></td>
         <td><%= @user.name %></td>
@@ -9,4 +9,5 @@
         <td><%= link_to t('Destroy'), transaction, method: :delete, remote: true, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+    <%= render "pagination" if @transactions_count > @page_size %>
 
