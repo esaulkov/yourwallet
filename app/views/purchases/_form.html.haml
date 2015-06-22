@@ -11,6 +11,6 @@
     = f.input :name
     = f.input :category_id,                                                  |
       disabled: true,                                                        |
-      hint: 'You cannot change the category.',                               |
-      input_html: { value: @category ? @category.id : purchase.category.id } |
+      hint: t('You cannot change the category'),                            |
+      input_html: { value: @category ? @category.id : purchase.category.id }
     = f.button :submit

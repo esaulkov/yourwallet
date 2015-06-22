@@ -323,6 +323,7 @@ ru:
   Listing Purchases: Список покупок
   Editing Purchase: Редактирование покупки
   New Purchase: Новая покупка
+  You cannot change the category: Вы не можете изменить категорию
   All Categories: Все категории
   Transactions by this purchase: Транзакции по этому виду покупок
   Editing Transaction: Редактирование транзакции
@@ -342,21 +343,33 @@ ru:
   activerecord:
     models:
       category:
-        one: Категория
+        one: категорию
         other: Категории
-      attributes:
-        category:
-          name: Название
       purchase:
-        one: Покупка
+        one: покупку
         other: Покупки
       transaction:
-        one: Транзакция
+        one: транзакцию
         other: Транзакции
       user:
-        one: Пользователь
+        one: пользователя
         other: Пользователи
       wallet:
-        one: Счет
+        one: счет
         other: Счета
-  
+      attributes:
+        category:
+          name: название
+        purchase:
+          name: название
+          category: категория
+        transaction:
+          date_time: дата/время
+          purchase: покупка
+          sum: сумма
+          wallet: счет
+        wallet:
+          name: название
+          balance: баланс
+          user: владелец
+      
