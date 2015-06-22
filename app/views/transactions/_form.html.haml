@@ -1,0 +1,15 @@
+= simple_form_for @transaction, remote: true, html: { class: "modal-form form-horizontal", id: "modal" }, defaults: { input_html: { class: 'field' } } do |f|
+  .modal-body
+    %ul.errors
+    = f.input :sum, as: :float
+    = f.input :date_time, as: :datetime
+    = f.association :wallet,
+        collection: current_user.wallets.map { |wallet| [wallet.name, wallet.id] },
+        include_blank: false
+    = f.association :purchase,
+        collection: current_user.get_purchases.map { |purchase| [purchase.name, purchase.id] },
+        include_blank: false
+  / modal-body
+  .modal-footer
+    = f.button :submit, input_html: { class: 'btn btn-primary' }
+    = link_to t("Cancel"), "#", class: "btn", data: {dismiss: "modal"}

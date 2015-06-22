@@ -1,0 +1,10 @@
+.col-xs-12.col-sm-12.col-md-8.col-md-offset-2
+  .panel.panel-primary
+    .panel-heading
+      %h3= t('Editing Purchase')
+    .panel-body
+      .row
+        = render 'form'
+        .col-sm-12
+          = link_to 'Show', @purchase, class: 'btn btn-success'
+          = link_to 'Back', category_purchases_path(@purchase.category), class: 'btn btn-info'

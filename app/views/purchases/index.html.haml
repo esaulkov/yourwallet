@@ -1,0 +1,19 @@
+%h1= t('Listing Purchases')
+%table.table.table-striped
+  %thead
+    %tr
+      %th= t('Name')
+      %th= t('Category')
+      %th{:colspan => "3"}
+  %tbody
+    - @purchases.each do |purchase|
+      %tr
+        %td= purchase.name
+        %td= purchase.category[:name]
+        %td= link_to t('Show'), purchase
+        %td= link_to t('Edit'), edit_purchase_path(purchase)
+        %td= link_to t('Destroy'), purchase, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to t('New Purchase'), new_category_purchase_path
+%br/
+= link_to t('All Categories'), categories_path

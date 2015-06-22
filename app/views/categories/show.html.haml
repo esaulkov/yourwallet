@@ -1,0 +1,27 @@
+.col-xs-12.col-sm-12.col-md-8.col-md-offset-2
+  .panel.panel-primary
+    .panel-heading
+      %h3= @category.name
+    .panel-body
+      %p
+        %strong
+          = t("User")
+          \:
+        = @category.user[:name]
+      .row
+        .col-md-12
+          %table.table.table-striped
+            %tbody
+              %tr.total
+                %td{:colspan => "3"}
+                  = t("Transactions in this category")
+                  \:
+              - @transactions.each do |transaction|
+                %tr
+                  %td= transaction.date_time
+                  %td= transaction.purchase.name
+                  %td= transaction.wallet.name
+                  %td= number_to_currency transaction.sum
+        .col-sm-12
+          = link_to t('Rename'), edit_category_path(@category), class: 'btn btn-warning'
+          = link_to t('Back'), categories_path, class: 'btn btn-info'

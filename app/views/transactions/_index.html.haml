@@ -1,0 +1,10 @@
+- @transactions.each do |transaction|
+  %tr
+    %td= l transaction.date_time, :format => :long
+    %td= transaction.purchase.name
+    %td= transaction.wallet.name
+    %td= @user.name
+    %td= number_to_currency transaction.sum
+    %td= link_to t('Edit'), edit_transaction_path(transaction), remote: true
+    %td= link_to t('Destroy'), transaction, method: :delete, remote: true, data: { confirm: 'Are you sure?' }
+= render "pagination" if @transactions_count > @page_size

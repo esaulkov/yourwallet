@@ -1,0 +1,10 @@
+$("ul.errors").html("")
+- if @transaction.errors.any?
+  - @transaction.errors.full_messages.each do |message|
+    $("ul.errors").append($("
+    %li>
+    ").html("#{message.html_safe}"))
+- else
+  $(".transaction-index").html("#{escape_javascript(render 'index')}")
+  $(".modal-content").html("")
+  $("#transaction-modal").modal("hide")

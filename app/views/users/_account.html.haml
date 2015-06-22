@@ -1,0 +1,23 @@
+.panel.panel-primary
+  .panel-heading
+    %h3= t('Your account')
+  .panel-body
+    .row
+      .col-md-12
+        %table.table.table-striped
+          %tbody
+            %tr.total
+              %td= t('Your account (total)')
+              %td.text-right
+                = number_to_currency @user.account_sum
+            - @user.wallets.each do |wallet|
+              %tr
+                %td= wallet.name
+                %td.text-right
+                  = number_to_currency wallet.balance
+        %table.table.table-striped
+          %tbody
+            %tr.danger
+              %td= t('Your limit')
+              %td.text-right
+                = number_to_currency @user.limit

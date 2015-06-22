@@ -1,0 +1,19 @@
+= render partial: 'layouts/flash'
+.container
+  %h3= t('Listing Transactions')
+  %table.table.table-hover
+    %thead
+      %tr
+        %th= t('Date/Time')
+        %th= t('Name')
+        %th= t('Wallet')
+        %th= t('User')
+        %th= t('Sum')
+        %th{:colspan => "2"}
+    %tbody.transaction-index
+      = render "index"
+  = link_to t('New Transaction'), new_transaction_path, remote: true, class: 'btn btn-primary'
+  .new-transaction
+#transaction-modal.modal.fade
+  .modal-dialog
+    .modal-content

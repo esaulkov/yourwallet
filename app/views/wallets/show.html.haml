@@ -1,0 +1,30 @@
+.col-xs-12.col-sm-12.col-md-8.col-md-offset-2
+  .panel.panel-primary
+    .panel-heading
+      %h3= @wallet.name
+    .panel-body
+      %p
+        %strong
+          = t('User')
+          \:
+        = @wallet.user[:name]
+      %p
+        %strong
+          = t('Balance')
+          \:
+        = number_to_currency @wallet.balance
+      .row
+        .col-md-12
+          %table.table.table-striped
+            %tbody
+              %tr.total
+                %td{:colspan => "3"}
+                  = t('Transactions by this wallet')
+                  \:
+              - @wallet.transactions.each do |transaction|
+                %tr
+                  %td= transaction.date_time
+                  %td= transaction.purchase.name
+                  %td= number_to_currency transaction.sum
+      = link_to t('Edit'), edit_wallet_path(@wallet), class: 'btn btn-warning'
+      = link_to t('Back'), user_wallets_path(current_user), class: 'btn btn-info'
