@@ -1,6 +1,6 @@
 class WalletsController < ApplicationController
   before_action :set_wallet, only: [:show, :edit, :update, :destroy]
-  
+
   # GET /wallets
   # GET /wallets.json
   def index
@@ -61,14 +61,15 @@ class WalletsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   private
-    def set_wallet
-      @wallet = Wallet.find(params[:id])
-    end
-  
-    def wallet_params
-      params.require(:wallet).permit(:name, :user_id, :balance)
-    end
+
+  def set_wallet
+    @wallet = Wallet.find(params[:id])
+  end
+
+  def wallet_params
+    params.require(:wallet).permit(:name, :user_id, :balance)
+  end
 end
- 
+

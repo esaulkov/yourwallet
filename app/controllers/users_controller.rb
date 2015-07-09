@@ -8,10 +8,8 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @last_transactions = @user.get_last_transactions
-    this_month = @user.get_this_month_transactions.to_a.sum  { |t| t.sum }
-    if this_month > @user.limit
-      flash.now[:alert] = t('.alert')
-    end
+    this_month = @user.get_this_month_transactions.to_a.sum(&:sum)
+    flash.now[:alert] = t('.alert') if this_month > @user.limit
   end
 
   def edit

@@ -1,6 +1,6 @@
 class Purchase < ActiveRecord::Base
   belongs_to :category
-  has_many :transactions
+  has_many :transactions, dependent: :destroy
   
   validates_uniqueness_of :name, scope: :category_id
   validates_length_of :name, maximum: 100

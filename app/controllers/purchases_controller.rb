@@ -1,7 +1,7 @@
 class PurchasesController < ApplicationController
   before_action :set_purchase, only: [:show, :edit, :update, :destroy]
   before_action :set_category, only: [:index, :new]
-  
+
   # GET /purchases
   # GET /purchases.json
   def index
@@ -64,17 +64,19 @@ class PurchasesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_purchase
-      @purchase = Purchase.find(params[:id])
-    end
 
-    def set_category
-      @category = Category.find(params[:category_id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_purchase
+    @purchase = Purchase.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def purchase_params
-      params.require(:purchase).permit(:name, :category_id)
-    end
+  def set_category
+    @category = Category.find(params[:category_id])
+  end
+
+  # Never trust parameters from the scary internet, 
+  # only allow the white list through.
+  def purchase_params
+    params.require(:purchase).permit(:name, :category_id)
+  end
 end

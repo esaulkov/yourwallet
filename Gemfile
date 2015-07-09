@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use sqlite3 as the database for Active Record
-#gem 'sqlite3'
+# gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -40,6 +40,9 @@ gem 'devise'
 # Use Simple Form to create forms
 gem 'simple_form'
 
+# User RuboCop for code analyze
+gem 'rubocop', require: false
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -55,7 +58,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
 
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  # Spring speeds up development by keeping your application running in the background. 
+  # Read more: https://github.com/rails/spring
   gem 'spring'
 end
 
