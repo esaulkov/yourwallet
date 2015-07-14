@@ -1,3 +1,9 @@
-%h1= t('New Purchase')
-= render 'form'
-= link_to t('Back'), category_purchases_path(@category)
+.col-xs-12.col-sm-12.col-md-8.col-md-offset-2
+  .panel.panel-primary
+    .panel-heading
+      %h3= t('New Purchase')
+    .panel-body
+      .row
+        = render 'form'
+        .col-sm-12
+          = link_to t('Back'), category_purchases_path(@category)

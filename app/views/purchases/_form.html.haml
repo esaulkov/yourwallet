@@ -1,5 +1,5 @@
 .col-xs-12.col-sm-8.col-md-4
-  = simple_form_for purchase = @category ? [@category, @purchase] : @purchase do |f|
+  = simple_form_for [@category, @purchase] do |f|
     - if @purchase.errors.any?
       #error_explanation
         %h2
@@ -9,8 +9,7 @@
           - @purchase.errors.full_messages.each do |message|
             %li= message
     = f.input :name
-    = f.input :category_id,                                                  |
-      disabled: true,                                                        |
-      hint: t('You cannot change the category'),                            |
-      input_html: { value: @category ? @category.id : purchase.category.id }
+    = f.association :category,                          |
+      collection: Category.where(id: @category.id).all, |
+      include_blank: false
     = f.button :submit

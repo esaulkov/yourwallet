@@ -16,7 +16,7 @@ ru:
         name: Название
       purchase:
         name: Название
-        category_id: Категория
+        category: Категория
       wallet:
         name: Название
         balance: Баланс
