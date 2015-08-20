@@ -1,7 +1,7 @@
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
   before_action :set_user
-  before_action :get_transactions
+  before_action :get_transactions, only: [:index]
 
   respond_to :html, :js
 
@@ -76,7 +76,7 @@ class TransactionsController < ApplicationController
   end
 
   def transaction_params
-    params.require(:transaction).permit(:sum, :date_time, :wallet_id, :purchase_id)
+    params.require(:transaction).permit(:sum, :date_time, :side, :inner, :wallet_id, :purchase_id)
   end
 
   def set_user

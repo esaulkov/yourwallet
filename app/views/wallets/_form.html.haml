@@ -1,18 +1,7 @@
 .col-xs-12.col-sm-8.col-md-4
-  = simple_form_for [@user, @wallet] do |f|
-    - if @wallet.errors.any?
-      #error_explanation
-        %h5
-          = pluralize(@wallet.errors.count, "error")
-          prohibited this wallet from being saved:
-        %ul
-          - @wallet.errors.full_messages.each do |message|
-            %li= message
+  = simple_form_for wallet do |f|
     = f.input :name
     = f.input :balance, as: :float
-    = f.association :user,                          |
-      collection: User.where(id: current_user).all, |
-      include_blank: false
     = f.button :submit
     %br/
     %br/

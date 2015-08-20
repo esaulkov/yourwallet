@@ -7,7 +7,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body{:role => "document"}
-    = render partial: 'layouts/header'
+    = render partial: 'shared/header'
     .container.theme-showcase{:role => "main"}
-      = render 'layouts/flash'
+      = render 'shared/flash'
       = yield

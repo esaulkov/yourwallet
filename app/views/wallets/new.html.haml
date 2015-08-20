@@ -4,6 +4,6 @@
       %h3= t('New Wallet')
     .panel-body
       .row
-        = render 'form'
+        = render partial: "form", locals: { wallet: @wallet }
         .col-sm-12
-          = link_to t('Back'), user_wallets_path(current_user), class: 'btn btn-info'
+          = link_to t('Back'), wallets_path, class: 'btn btn-info'

@@ -18,18 +18,16 @@ class Transaction < ActiveRecord::Base
   end
 
   def add_to_wallet
-    wallet.increment(:balance, sum)
-    wallet.save
+    change_sum = side ? sum : 0 - sum
+    wallet.increment!(:balance, change_sum)
   end
 
   def save_transaction_sum
-    @temp_trans = Transaction.find(id)
-    wallet.decrement(:balance, @temp_trans.sum)
-    wallet.save
+    temp_trans = Transaction.find(id)
+    wallet.decrement!(:balance, temp_trans.sum)
   end
 
   def remove_from_wallet
-    wallet.decrement(:balance, sum)
-    wallet.save
+    wallet.decrement!(:balance, sum)
   end
 end

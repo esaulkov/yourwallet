@@ -1,4 +1,4 @@
-= render partial: 'layouts/flash'
+= render partial: 'shared/flash'
 .container
   %h3= t('Listing Transactions')
   %table.table.table-hover
@@ -11,7 +11,7 @@
         %th= t('Sum')
         %th{:colspan => "2"}
     %tbody.transaction-index
-      = render "index"
+      = render partial: "index", locals: { transactions: @transactions }
   = link_to t('New Transaction'), new_transaction_path, remote: true, class: 'btn btn-primary'
   .new-transaction
 #transaction-modal.modal.fade

@@ -29,6 +29,6 @@
             %li
               %a{:href => "#"} One more separated link
       - if user_signed_in?
-        = render partial: "layouts/user"
+        = render partial: "shared/user"
       - else
-        = render partial: "layouts/guest"
+        = render partial: "shared/guest"

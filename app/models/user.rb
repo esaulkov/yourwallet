@@ -10,9 +10,7 @@ class User < ActiveRecord::Base
 
   before_save { email.downcase! }
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
-            uniqueness: { case_sensitive: false }
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
   
   validates_uniqueness_of :password
   validates_presence_of :password, if: :password_required?
@@ -38,6 +36,12 @@ class User < ActiveRecord::Base
   def get_purchases
     @category_ids = categories.to_a(&:id)
     Purchase.select('purchases.*').where(category_id: @category_ids)
+  end
+
+  def has_overdraft?
+    return false if limit.blank?
+    this_month = get_this_month_transactions.to_a.sum(&:sum)
+    this_month > limit
   end
 
   protected
