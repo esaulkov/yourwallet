@@ -77,7 +77,7 @@ class TransactionsController < ApplicationController
 
   def transaction_params
     params.require(:transaction).
-    permit(:sum, :date_time, :side, :inner, :wallet_id, :purchase_id)
+      permit(:sum, :date_time, :side, :inner, :wallet_id, :purchase_id)
   end
 
   def set_user
