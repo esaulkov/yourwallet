@@ -16,8 +16,8 @@
             - @last_transactions.each do |transaction|
               %tr
                 %td= transaction.date_time.strftime("%F %R")
-                %td= transaction.purchase_name
-                %td= transaction.wallet_name
+                %td= transaction.purchase.name
+                %td= transaction.wallet.name
                 %td.text-right
                   = number_to_currency transaction.sum
               - total_sum += transaction.sum
