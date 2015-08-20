@@ -12,10 +12,9 @@ Rails.application.routes.draw do
     resources :purchases
   end
   resources :transactions
-  resources :users, except: :index, shallow: true do
-    resources :wallets
-  end
+  resources :wallets
   
+  resources :users, only: :show
   get 'users/profile', as: 'user_root'
   
   root 'main#index'

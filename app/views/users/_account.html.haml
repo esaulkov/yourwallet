@@ -9,8 +9,8 @@
             %tr.total
               %td= t('Your account (total)')
               %td.text-right
-                = number_to_currency @user.account_sum
-            - @user.wallets.each do |wallet|
+                = number_to_currency current_user.account_sum
+            - current_user.wallets.each do |wallet|
               %tr
                 %td= wallet.name
                 %td.text-right
@@ -20,4 +20,4 @@
             %tr.danger
               %td= t('Your limit')
               %td.text-right
-                = number_to_currency @user.limit
+                = number_to_currency current_user.limit

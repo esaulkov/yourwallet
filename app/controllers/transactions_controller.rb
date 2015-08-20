@@ -1,7 +1,7 @@
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
   before_action :set_user
-  before_action :get_transactions
+  before_action :get_transactions, only: [:index]
 
   respond_to :html, :js
 
@@ -76,7 +76,8 @@ class TransactionsController < ApplicationController
   end
 
   def transaction_params
-    params.require(:transaction).permit(:sum, :date_time, :wallet_id, :purchase_id)
+    params.require(:transaction).
+      permit(:sum, :date_time, :side, :inner, :wallet_id, :purchase_id)
   end
 
   def set_user
@@ -87,8 +88,11 @@ class TransactionsController < ApplicationController
     @page_size ||= 10
     @page_number = params[:page_number] || session[:page_number] || 0
     @page_number = @page_number.to_i
-    session[:page_number] = @page_number if session[:page_number] != @page_number
-    @transactions = Transaction.where(wallet_id: @user.wallets).order(id: :desc).limit(@page_size).offset(@page_size * @page_number).includes(:purchase).includes(:wallet)
-    @transactions_count = Transaction.where(wallet_id: @user.wallets).count
+    session[:page_number] = @page_number
+    offset = @page_size * @page_number
+    @transactions = current_user.transactions.order(id: :desc).
+                    limit(@page_size).offset(offset).
+                    includes(:purchase).includes(:wallet)
+    @transactions_count = current_user.transactions.count
   end
 end

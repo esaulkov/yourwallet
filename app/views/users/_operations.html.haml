@@ -12,17 +12,17 @@
               %th= t('Wallet')
               %th= t('Sum')
           %tbody
-            - @total_sum = 0
+            - total_sum = 0
             - @last_transactions.each do |transaction|
               %tr
                 %td= transaction.date_time.strftime("%F %R")
-                %td= transaction.purchase_name
-                %td= transaction.wallet_name
+                %td= transaction.purchase.name
+                %td= transaction.wallet.name
                 %td.text-right
                   = number_to_currency transaction.sum
-              - @total_sum += transaction.sum
+              - total_sum += transaction.sum
             %tr.total
               %td{:colspan => "2"}= t('Total')
               %td.text-right{:colspan => "2"}
-                \-#{number_to_currency @total_sum}
+                \-#{number_to_currency total_sum}
 = link_to t('Add operations'), transactions_path, :class => 'btn btn-primary'

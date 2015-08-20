@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150605120739) do
+ActiveRecord::Schema.define(version: 20150716092055) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20150605120739) do
     t.integer  "purchase_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "side"
+    t.integer  "inner"
   end
 
   add_index "transactions", ["purchase_id"], name: "index_transactions_on_purchase_id"

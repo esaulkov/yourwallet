@@ -1,22 +1,22 @@
 class PurchasesController < ApplicationController
   before_action :set_purchase, only: [:show, :edit, :update, :destroy]
-  before_action :set_category, only: [:index, :new]
+  before_action :set_category, only: [:index, :new, :create]
 
   # GET /purchases
   # GET /purchases.json
   def index
-    @purchases = Purchase.where(category_id: @category).includes(:category).all
+    @purchases = @category.purchases
   end
 
   # GET /purchases/1
   # GET /purchases/1.json
   def show
-    @transactions = Transaction.where(purchase_id: @purchase).includes(:wallet).all
+    @transactions = @purchase.transactions
   end
 
   # GET /purchases/new
   def new
-    @purchase = Purchase.new
+    @purchase = @category.purchases.new
   end
 
   # GET /purchases/1/edit
@@ -26,7 +26,7 @@ class PurchasesController < ApplicationController
   # POST /purchases
   # POST /purchases.json
   def create
-    @purchase = Purchase.new(purchase_params)
+    @purchase = @category.purchases.new(purchase_params)
 
     respond_to do |format|
       if @purchase.save
@@ -68,7 +68,6 @@ class PurchasesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_purchase
     @purchase = Purchase.find(params[:id])
-    @category = @purchase.category
   end
 
   def set_category
