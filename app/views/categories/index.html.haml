@@ -1,18 +1,18 @@
-%h1= t '.title'
+%h1= t ".title"
 %table.table.table-striped
   %thead
     %tr
-      %th= t("Name")
-      %th= t("User")
+      %th= t "name"
+      %th= t "user"
       %th{:colspan => "4"}
   %tbody
     - @categories.each do |category|
       %tr
         %td= category.name
         %td= category.user.name
-        %td= link_to t('Show purchases'), category_purchases_path(category)
-        %td= link_to t('Show transactions'), category
-        %td= link_to t('Edit'), edit_category_path(category)
-        %td= link_to t('Destroy'), category, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to t(".purchases"), category_purchases_path(category)
+        %td= link_to t(".transactions"), category
+        %td= link_to t("actions.edit"), edit_category_path(category)
+        %td= link_to t("actions.destroy"), category, method: :delete, data: { confirm: "actions.confirmation" }
 %br/
-= link_to t('New Category'), new_category_path
+= link_to t("categories.new.title"), new_category_path

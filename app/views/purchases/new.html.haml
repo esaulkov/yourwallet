@@ -1,9 +1,9 @@
 .col-xs-12.col-sm-12.col-md-8.col-md-offset-2
   .panel.panel-primary
     .panel-heading
-      %h3= t('New Purchase')
+      %h3= t ".title"
     .panel-body
       .row
-        = render 'form'
+        = render "form"
         .col-sm-12
-          = link_to t('Back'), category_purchases_path(@category)
+          = link_to t("actions.back"), category_purchases_path(@category)

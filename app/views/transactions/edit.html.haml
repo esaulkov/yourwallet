@@ -1,5 +1,5 @@
-%h1= t('Editing Transaction')
+%h1= t ".title"
 = render 'form'
-= link_to t('Show'), @transaction
+= link_to t("actions.show"), @transaction
 |
-= link_to t('Back'), transactions_path
+= link_to t("actions.back"), transactions_path

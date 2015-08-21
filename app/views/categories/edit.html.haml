@@ -1,10 +1,10 @@
 .col-xs-12.col-sm-12.col-md-8.col-md-offset-2
   .panel.panel-primary
     .panel-heading
-      %h3= t("Editing Category")
+      %h3= t(".title")
     .panel-body
       .row
-        = render 'form'
+        = render "form"
         .col-sm-12
-          = link_to t('Show'), @category, class: 'btn btn-success'
-          = link_to t('Back'), categories_path, class: 'btn btn-info'
+          = link_to t("actions.show"), @category, class: "btn btn-success"
+          = link_to t("actions.back"), categories_path, class: "btn btn-info"
