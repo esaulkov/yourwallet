@@ -1,12 +1,12 @@
 .jumbotron
-  %h1= t('Your cabinet')
+  %h1= t ".title"
   %p
-    = t('Welcome to your finances management system')
+    = t ".greeting"
     , #{current_user.email}.
 .page-header
-  %h1= t('Balance')
+  %h1= t "balance"
 .row
   .col-md-8
-    = render :partial => 'operations'
+    = render partial: "operations"
   .col-md-4
-    = render :partial => 'account'
+    = render partial: "account"

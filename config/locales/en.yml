@@ -1,26 +1,5 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  Project name: Your wallet
+  project_name: Your wallet
   menu:
     home: Home
     about: About
@@ -32,37 +11,127 @@ en:
     cabinet: Cabinet
     owner: Profile
     logout: Log out
+  actions:  
+    show: Show
+    back: Back
+    submit: Save
+    edit: Edit
+    rename: Rename
+    destroy: Delete
+    cancel: Cancel
+    confirmation: Are you sure?
+  balance: Balance
+  category: Category
+  date_time: Date, time
+  name: Name
+  sum: Sum
+  total: Total
+  user: User
+  owner: Owner
+  wallet: Wallet
   categories:
     index:
-      title: Listing Categories
+      title: Listing categories
+      purchases: Show purchases
+      transactions: Show transactions
+    new:
+      title: New category
     create:
-      notice: "Category was successfully created."
+      notice: Category was successfully created.
+    edit:
+      title: Editing category
+    show:
+      transactions: Transactions in the category
     update:
-      notice: "Category was successfully updated."
+      notice: Category was successfully updated.
     destroy:
-      notice: "Category was successfully destroyed."
+      notice: Category was successfully destroyed.
   purchases:
+    index:
+      title: Listing purchases
+      categories: All categories
+    new:
+      title: New purchase
     create:
-      notice: "Purchase was successfully created."
+      notice: Purchase was successfully created.
+    show:
+      transactions: Transactions by this purchase
+    edit:
+      title: Editing purchase
     update:
-      notice: "Purchase was successfully updated."
+      notice: Purchase was successfully updated.
     destroy:
-      notice: "Purchase was successfully destroyed."
+      notice: Purchase was successfully destroyed.
   transactions:
+    index:
+      title: Listing transactions
+    new:
+      title: New transaction
     create:
-      notice: "Transaction was successfully created."
+      notice: Transaction was successfully created.
+    edit:
+      title: Editing transaction
     update:
-      notice: "Transaction was successfully updated."
+      notice: Transaction was successfully updated.
     destroy:
-      notice: "Transaction was successfully destroyed."
+      notice: Transaction was successfully destroyed.
   users:
     show:
-      alert: "Your costs in this month exceeded the limit"
+      title: Your cabinet
+      alert: Your costs in this month exceeded the limit
+      greeting: Welcome to your finances management system
+    account:
+      title: Your account
+      total: Your money (total)
+      limit: Your limit
+    operations:
+      title: Last transactions
+      transactions: Add operation
   wallets:
+    index:
+      title: Listing wallets
+    new:
+      title: New wallet
     create:
-      notice: "Wallet was successfully created."
+      notice: Wallet was successfully created.
+    show:
+      transactions: Transactions by this wallet
+    edit:
+      title: Editing wallet
     update:
-      notice: "Wallet was successfully updated."
+      notice: Wallet was successfully updated.
     destroy:
-      notice: "Wallet was successfully destroyed."
+      notice: Wallet was successfully destroyed.
+  activerecord:
+    models:
+      category:
+        one: category
+        other: categories
+      purchase:
+        one: purchase
+        other: purchases
+      transaction:
+        one: transaction
+        other: transactions
+      user:
+        one: user
+        other: users
+      wallet:
+        one: wallet
+        other: wallets
+      attributes:
+        category:
+          name: name
+        purchase:
+          name: name
+          category: category
+        transaction:
+          date_time: date/time
+          purchase: purchase
+          sum: sum
+          wallet: wallet
+        wallet:
+          name: name
+          balance: balance
+          user: owner
 

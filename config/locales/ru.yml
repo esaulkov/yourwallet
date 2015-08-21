@@ -254,7 +254,7 @@ ru:
       long: "%d %B %Y, %H:%M"
       short: "%d %b, %H:%M"
     pm: вечера
-  Project name: Ваш кошелек
+  project_name: Ваш кошелек
   menu:
     home: Главная
     about: О проекте
@@ -266,80 +266,97 @@ ru:
     cabinet: Кабинет
     owner: Владелец
     logout: Выйти
-    
-  Show: Показать
-  Back: Назад
-  Submit: Сохранить
-  Edit: Редактировать
-  Rename: Переименовать
-  Destroy: Удалить
-  Cancel: Отмена
-  Balance: Баланс
-  Category: Категория
-  Date/Time: Дата, время
-  Name: Название
-  Sum: Сумма
-  Total: Всего
-  User: Пользователь
-  Wallet: Счет
+  actions:  
+    show: Показать
+    back: Назад
+    submit: Сохранить
+    edit: Редактировать
+    rename: Переименовать
+    destroy: Удалить
+    cancel: Отмена
+    confirmation: Вы уверены?
+  balance: Баланс
+  category: Категория
+  date_time: Дата, время
+  name: Название
+  sum: Сумма
+  total: Всего
+  user: Пользователь
+  owner: Владелец
+  wallet: Счет
   categories:
     index:
       title: Список категорий
+      purchases: Показать покупки
+      transactions: Показать транзакции
+    new:
+      title: Новая категория
     create:
-      notice: "Категория была успешно создана."
+      notice: Категория была успешно создана.
+    edit:
+      title: Редактирование категории
+    show:
+      transactions: Транзакции в этой категории
     update:
-      notice: "Категория была успешно обновлена."
+      notice: Категория была успешно обновлена.
     destroy:
-      notice: "Категория была успешно удалена."
+      notice: Категория была успешно удалена.
   purchases:
+    index:
+      title: Список покупок
+      categories: Все категории
+    new:
+      title: Новая покупка
     create:
-      notice: "Покупка была успешно создана."
+      notice: Покупка была успешно создана.
+    show:
+      transactions: Транзакции по этому виду покупок
+    edit:
+      title: Редактирование покупки
     update:
-      notice: "Покупка была успешно обновлена."
+      notice: Покупка была успешно обновлена.
     destroy:
-      notice: "Покупка была успешно удалена."
+      notice: Покупка была успешно удалена.
   transactions:
+    index:
+      title: Список транзакций
+    new:
+      title: Новая транзакция
     create:
-      notice: "Транзакция была успешно создана."
+      notice: Транзакция была успешно создана.
+    edit:
+      title: Редактирование транзакции
     update:
-      notice: "Транзакция была успешно обновлена."
+      notice: Транзакция была успешно обновлена.
     destroy:
-      notice: "Транзакция была успешно удалена."
+      notice: Транзакция была успешно удалена.
   users:
     show:
-      alert: "Ваши затраты в этом месяце превысили установленный лимит"
+      title: Ваш кабинет
+      alert: Ваши затраты в этом месяце превысили установленный лимит
+      greeting: Добро пожаловать в систему управления Вашими финансами
+    account:
+      title: Ваш аккаунт
+      total: Всего на Ваших счетах
+      limit: Ваш лимит
+    operations:
+      title: Последние транзакции
+      transactions: Операции с транзакциями
   wallets:
+    index:
+      title: Список счетов
+    new:
+      title: Новый счет
     create:
-      notice: "Счет был успешно создан."
+      notice: Счет был успешно создан.
+    show:
+      transactions: Транзакции по этому счету
+    edit:
+      title: Редактирование счета
     update:
-      notice: "Счет был успешно обновлен."
+      notice: Счет был успешно обновлен.
     destroy:
-      notice: "Счет был успешно удален."
-  Editing Category: Редактирование категории
-  New Category: Новая категория
-  Transactions in this category: Транзакции в этой категории
-  Show purchases: Показать покупки
-  Show transactions: Показать транзакции
-  Listing Purchases: Список покупок
-  Editing Purchase: Редактирование покупки
-  New Purchase: Новая покупка
-  You cannot change the category: Вы не можете изменить категорию
-  All Categories: Все категории
-  Transactions by this purchase: Транзакции по этому виду покупок
-  Editing Transaction: Редактирование транзакции
-  Listing Transactions: Список транзакций
-  New Transaction: Новая транзакция
-  Your account: Ваш аккаунт
-  Your account (total): Всего на Ваших счетах
-  Your limit: Ваш лимит
-  Last operations: Последние транзакции
-  Add operations: Операции с транзакциями
-  Your cabinet: Ваш кабинет
-  Welcome to your finances management system: Добро пожаловать в систему управления Вашими финансами
-  Editing Wallet: Редактирование счета
-  Listing Wallets: Список счетов
-  New Wallet: Новый счет
-  Transactions by this wallet: Транзакции по этому счету
+      notice: Счет был успешно удален.
   activerecord:
     models:
       category:
@@ -371,5 +388,4 @@ ru:
         wallet:
           name: название
           balance: баланс
-          user: владелец
-      
+          user: владелец      

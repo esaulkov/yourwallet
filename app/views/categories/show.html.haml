@@ -5,7 +5,7 @@
     .panel-body
       %p
         %strong
-          = t("User")
+          = t "owner"
           \:
         = @category.user.name
       .row
@@ -13,15 +13,15 @@
           %table.table.table-striped
             %tbody
               %tr.total
-                %td{:colspan => "3"}
-                  = t("Transactions in this category")
+                %td{:colspan => "4"}
+                  = t ".transactions"
                   \:
               - @transactions.each do |transaction|
                 %tr
-                  %td= transaction.date_time
+                  %td= l transaction.date_time, :format => :long
                   %td= transaction.purchase.name
                   %td= transaction.wallet.name
                   %td= number_to_currency transaction.sum
         .col-sm-12
-          = link_to t('Rename'), edit_category_path(@category), class: 'btn btn-warning'
-          = link_to t('Back'), categories_path, class: 'btn btn-info'
+          = link_to t("actions.rename"), edit_category_path(@category), class: "btn btn-warning"
+          = link_to t("actions.back"), categories_path, class: "btn btn-info"

@@ -1,21 +1,21 @@
 .panel.panel-info
   .panel-heading
-    %h3= t('Last operations')
+    %h3= t ".title"
   .panel-body
     .row
       .col-md-12
         %table.table.table-striped
           %thead
             %tr
-              %th= t('Date/Time')
-              %th= t('Name')
-              %th= t('Wallet')
-              %th= t('Sum')
+              %th= t "date_time"
+              %th= t "name"
+              %th= t "wallet"
+              %th= t "sum"
           %tbody
             - total_sum = 0
             - @last_transactions.each do |transaction|
               %tr
-                %td= transaction.date_time.strftime("%F %R")
+                %td= l transaction.date_time, format: :short
                 %td= transaction.purchase.name
                 %td= transaction.wallet.name
                 %td.text-right
@@ -25,4 +25,4 @@
               %td{:colspan => "2"}= t('Total')
               %td.text-right{:colspan => "2"}
                 \-#{number_to_currency total_sum}
-= link_to t('Add operations'), transactions_path, :class => 'btn btn-primary'
+= link_to t(".transactions"), transactions_path, class: "btn btn-primary"

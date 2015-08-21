@@ -5,12 +5,12 @@
     .panel-body
       %p
         %strong
-          = t('User')
+          = t "owner"
           \:
         = @wallet.user.name
       %p
         %strong
-          = t('Balance')
+          = t "balance"
           \:
         = number_to_currency @wallet.balance
       .row
@@ -19,12 +19,12 @@
             %tbody
               %tr.total
                 %td{:colspan => "3"}
-                  = t('Transactions by this wallet')
+                  = t ".transactions"
                   \:
               - @wallet.transactions.each do |transaction|
                 %tr
-                  %td= transaction.date_time
+                  %td= l transaction.date_time, format: :long
                   %td= transaction.purchase.name
                   %td= number_to_currency transaction.sum
-      = link_to t('Edit'), edit_wallet_path(@wallet), class: 'btn btn-warning'
-      = link_to t('Back'), user_wallets_path(current_user), class: 'btn btn-info'
+      = link_to t("actions.edit"), edit_wallet_path(@wallet), class: "btn btn-warning"
+      = link_to t("actions.back"), wallets_path, class: "btn btn-info"

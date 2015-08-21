@@ -1,6 +1,5 @@
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
-  before_action :set_user
   before_action :get_transactions, only: [:index]
 
   respond_to :html, :js
@@ -17,7 +16,7 @@ class TransactionsController < ApplicationController
 
   # GET /transactions/new
   def new
-    @transaction = Transaction.new
+    @transaction = current_user.transactions.new
   end
 
   # GET /transactions/1/edit
@@ -27,7 +26,7 @@ class TransactionsController < ApplicationController
   # POST /transactions
   # POST /transactions.json
   def create
-    @transaction = Transaction.new(transaction_params)
+    @transaction = current_user.transactions.new(transaction_params)
 
     respond_to do |format|
       if @transaction.save
@@ -78,10 +77,6 @@ class TransactionsController < ApplicationController
   def transaction_params
     params.require(:transaction).
       permit(:sum, :date_time, :side, :inner, :wallet_id, :purchase_id)
-  end
-
-  def set_user
-    @user = current_user
   end
 
   def get_transactions

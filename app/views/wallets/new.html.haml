@@ -1,9 +1,9 @@
 .col-xs-12.col-sm-12.col-md-8.col-md-offset-2
   .panel.panel-primary
     .panel-heading
-      %h3= t('New Wallet')
+      %h3= t ".title"
     .panel-body
       .row
         = render partial: "form", locals: { wallet: @wallet }
         .col-sm-12
-          = link_to t('Back'), wallets_path, class: 'btn btn-info'
+          = link_to t("actions.back"), wallets_path, class: "btn btn-info"

@@ -1,13 +1,13 @@
 .panel.panel-primary
   .panel-heading
-    %h3= t('Your account')
+    %h3= t ".title"
   .panel-body
     .row
       .col-md-12
         %table.table.table-striped
           %tbody
             %tr.total
-              %td= t('Your account (total)')
+              %td= t ".total"
               %td.text-right
                 = number_to_currency current_user.account_sum
             - current_user.wallets.each do |wallet|
@@ -18,6 +18,6 @@
         %table.table.table-striped
           %tbody
             %tr.danger
-              %td= t('Your limit')
+              %td= t ".limit"
               %td.text-right
                 = number_to_currency current_user.limit
