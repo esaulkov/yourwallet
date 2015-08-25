@@ -277,7 +277,9 @@ ru:
     confirmation: Вы уверены?
   balance: Баланс
   category: Категория
+  credit: Расход
   date_time: Дата, время
+  debit: Приход
   name: Название
   sum: Сумма
   total: Всего

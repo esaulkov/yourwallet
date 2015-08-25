@@ -21,7 +21,7 @@
                   %td= l transaction.date_time, :format => :long
                   %td= transaction.purchase.name
                   %td= transaction.wallet.name
-                  %td= number_to_currency transaction.sum
+                  %td= number_to_currency add_sign_to_value(transaction.sum, transaction.side)
         .col-sm-12
           = link_to t("actions.rename"), edit_category_path(@category), class: "btn btn-warning"
           = link_to t("actions.back"), categories_path, class: "btn btn-info"

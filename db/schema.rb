@@ -36,9 +36,9 @@ ActiveRecord::Schema.define(version: 20150716092055) do
     t.datetime "date_time"
     t.integer  "wallet_id"
     t.integer  "purchase_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "side"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "side",        default: false
     t.integer  "inner"
   end
 

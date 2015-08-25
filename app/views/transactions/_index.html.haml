@@ -3,8 +3,7 @@
     %td= l transaction.date_time, :format => :long
     %td= transaction.purchase.name
     %td= transaction.wallet.name
-    %td= current_user.name
-    %td= number_to_currency transaction.sum
+    %td= number_to_currency add_sign_to_value(transaction.sum, transaction.side)
     %td= link_to t("actions.edit"), edit_transaction_path(transaction), remote: true
     %td= link_to t("actions.destroy"), transaction, method: :delete, remote: true, data: { confirm: "actions.confirmation" }
 = render "pagination" if @transactions_count > @page_size

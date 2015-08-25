@@ -4,7 +4,3 @@ $("ul.errors").html("")
     $("ul.errors").append($("
     %li>
     ").html("#{message.html_safe}"))
-- else
-  $(".transaction-index").html("#{escape_javascript(render 'index')}")
-  $(".modal-content").html("")
-  $("#transaction-modal").modal("hide")

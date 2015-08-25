@@ -22,7 +22,9 @@ en:
     confirmation: Are you sure?
   balance: Balance
   category: Category
+  credit: Credit
   date_time: Date, time
+  debit: Debit
   name: Name
   sum: Sum
   total: Total

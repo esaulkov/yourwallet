@@ -2,6 +2,7 @@
   .modal-body
     %ul.errors
     = f.input :sum, as: :float
+    = f.collection_radio_buttons :side, [[true, t("debit")], [false, t("credit")]], :first, :last
     = f.input :date_time, as: :datetime
     = f.association :wallet,
         collection: current_user.wallets.map { |wallet| [wallet.name, wallet.id] },
