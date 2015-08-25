@@ -1,28 +1,20 @@
 class WalletsController < ApplicationController
   before_action :set_wallet, only: [:show, :edit, :update, :destroy]
 
-  # GET /wallets
-  # GET /wallets.json
   def index
     @wallets = current_user.wallets
   end
 
-  # GET /wallets/1
-  # GET /wallets/1.json
   def show
   end
 
-  # GET /wallets/new
   def new
     @wallet = current_user.wallets.new
   end
 
-  # GET /wallets/1/edit
   def edit
   end
 
-  # POST /wallets
-  # POST /wallets.json
   def create
     @wallet = current_user.wallets.new(wallet_params)
 
@@ -37,8 +29,6 @@ class WalletsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /wallets/1
-  # PATCH/PUT /wallets/1.json
   def update
     respond_to do |format|
       if @wallet.update(wallet_params)
@@ -51,8 +41,6 @@ class WalletsController < ApplicationController
     end
   end
 
-  # DELETE /wallets/1
-  # DELETE /wallets/1.json
   def destroy
     @wallet.destroy
     respond_to do |format|
