@@ -23,7 +23,7 @@ class TransactionsController < ApplicationController
     respond_to do |format|
       if @transaction.save
         format.html { render :show, notice: t('.notice') }
-        format.js   { redirect_to transactions_path }
+        format.js { redirect_to transactions_path }
         format.json { render :show, status: :created, location: @transaction }
       else
         format.html { render :new }
@@ -37,7 +37,7 @@ class TransactionsController < ApplicationController
       if @transaction.update(transaction_params)
         get_transactions
         format.html { render :show, notice: t('.notice') }
-        format.js   { redirect_to transactions_path }
+        format.js { redirect_to transactions_path }
         format.json { render :show, status: :ok, location: @transaction }
       else
         format.html { render :edit }
