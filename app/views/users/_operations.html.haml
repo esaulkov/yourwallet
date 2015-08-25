@@ -22,7 +22,7 @@
                   = number_to_currency transaction.sum
               - total_sum += transaction.sum
             %tr.total
-              %td{:colspan => "2"}= t('Total')
+              %td{:colspan => "2"}= t("Total")
               %td.text-right{:colspan => "2"}
                 \-#{number_to_currency total_sum}
 = link_to t(".transactions"), transactions_path, class: "btn btn-primary"

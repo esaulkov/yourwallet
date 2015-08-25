@@ -4,27 +4,19 @@ class TransactionsController < ApplicationController
 
   respond_to :html, :js
 
-  # GET /transactions
-  # GET /transactions.json
   def index
   end
 
-  # GET /transactions/1
-  # GET /transactions/1.json
   def show
   end
 
-  # GET /transactions/new
   def new
     @transaction = current_user.transactions.new
   end
 
-  # GET /transactions/1/edit
   def edit
   end
 
-  # POST /transactions
-  # POST /transactions.json
   def create
     @transaction = current_user.transactions.new(transaction_params)
 
@@ -40,8 +32,6 @@ class TransactionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /transactions/1
-  # PATCH/PUT /transactions/1.json
   def update
     @transaction.update_attributes(transaction_params)
     respond_to do |format|
@@ -56,8 +46,6 @@ class TransactionsController < ApplicationController
     end
   end
 
-  # DELETE /transactions/1
-  # DELETE /transactions/1.json
   def destroy
     @transaction.destroy
     respond_to do |format|
@@ -69,7 +57,6 @@ class TransactionsController < ApplicationController
 
   private
     
-  # Use callbacks to share common setup or constraints between actions.
   def set_transaction
     @transaction = Transaction.find(params[:id])
   end
